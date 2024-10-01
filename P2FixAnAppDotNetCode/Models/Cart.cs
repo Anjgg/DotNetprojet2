@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Razor.Language;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models
@@ -8,6 +10,11 @@ namespace P2FixAnAppDotNetCode.Models
     /// </summary>
     public class Cart : ICart
     {
+        
+        private List<CartLine> cartLines = new List<CartLine>();
+        
+
+
         /// <summary>
         /// Read-only property for display only
         /// </summary>
@@ -19,7 +26,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// <returns></returns>
         private List<CartLine> GetCartLineList()
         {
-            return new List<CartLine>();
+            return cartLines;
         }
 
         /// <summary>
@@ -27,8 +34,29 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            // TODO implement the method
+            // Create the item
+            CartLine line = new CartLine();
+            line.OrderLineId = product.Id;
+            line.Product = product;
+            line.Quantity = quantity;
+
+            // Condition for adding item or incrementing quantity
+            if (cartLines.Exists(x => x.OrderLineId == line.OrderLineId))
+            {
+                int indexInList = cartLines.FindIndex(x => x.OrderLineId == product.Id);
+                cartLines[indexInList].Quantity += quantity;
+            }
+            else
+            {
+                cartLines.Add(line);
+            }
         }
+        
+            
+            
+
+            // TODO implement the method
+        
 
         /// <summary>
         /// Removes a product form the cart
