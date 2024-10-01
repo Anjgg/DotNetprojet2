@@ -89,8 +89,10 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
-            // TODO implement the method
-            return null;
+           int indexInList = _cartLines.FindIndex(x => x.Product.Id == productId);
+            if (indexInList == -1)
+                return null;
+            return _cartLines[indexInList].Product;     
         }
 
         /// <summary>
