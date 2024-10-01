@@ -11,7 +11,7 @@ namespace P2FixAnAppDotNetCode.Models
     public class Cart : ICart
     {
         
-        private List<CartLine> cartLines = new List<CartLine>();
+        private List<CartLine> _cartLines = new List<CartLine>();
         
 
 
@@ -26,7 +26,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// <returns></returns>
         private List<CartLine> GetCartLineList()
         {
-            return cartLines;
+            return _cartLines;
         }
 
         /// <summary>
@@ -41,14 +41,14 @@ namespace P2FixAnAppDotNetCode.Models
             line.Quantity = quantity;
 
             // Condition for adding item or incrementing quantity
-            if (cartLines.Exists(x => x.OrderLineId == line.OrderLineId))
+            if (_cartLines.Exists(x => x.OrderLineId == line.OrderLineId))
             {
-                int indexInList = cartLines.FindIndex(x => x.OrderLineId == product.Id);
-                cartLines[indexInList].Quantity += quantity;
+                int indexInList = _cartLines.FindIndex(x => x.OrderLineId == product.Id);
+                _cartLines[indexInList].Quantity += quantity;
             }
             else
             {
-                cartLines.Add(line);
+                _cartLines.Add(line);
             }
         }
         
