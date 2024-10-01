@@ -34,22 +34,33 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            // Create the item
-            CartLine line = new CartLine();
-            line.OrderLineId = product.Id;
-            line.Product = product;
-            line.Quantity = quantity;
-
             // Condition for adding item or incrementing quantity
-            if (_cartLines.Exists(x => x.OrderLineId == line.OrderLineId))
+            if (_cartLines.Exists(x => x.OrderLineId == product.Id))
             {
                 int indexInList = _cartLines.FindIndex(x => x.OrderLineId == product.Id);
                 _cartLines[indexInList].Quantity += quantity;
             }
             else
             {
+                CartLine line = new CartLine();         // Create the item
+                line.OrderLineId = product.Id;
+                line.Product = product;
+                line.Quantity = quantity;
                 _cartLines.Add(line);
             }
+            
+            
+
+            
+            //if (_cartLines.Exists(x => x.OrderLineId == line.OrderLineId))
+            //{
+            //    int indexInList = _cartLines.FindIndex(x => x.OrderLineId == product.Id);
+            //    _cartLines[indexInList].Quantity += quantity;
+            //}
+            //else
+            //{
+            //    _cartLines.Add(line);
+            //}
         }
         
             
