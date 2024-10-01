@@ -35,7 +35,7 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // Condition for adding item or incrementing quantity
-            if (_cartLines.Exists(x => x.OrderLineId == product.Id))
+            if (_cartLines.Exists(x => x.Product.Id == product.Id))
             {
                 int indexInList = _cartLines.FindIndex(x => x.OrderLineId == product.Id);
                 _cartLines[indexInList].Quantity += quantity;
@@ -61,8 +61,12 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public double GetTotalValue()
         {
-            // TODO implement the method
-            return 0.0;
+            double totalValue = 0;
+            for (int i = 0; i < _cartLines.Count; i++)
+            {
+                totalValue += (_cartLines[i].Product.Price * _cartLines[i].Quantity);
+            }
+            return totalValue;
         }
 
         /// <summary>
