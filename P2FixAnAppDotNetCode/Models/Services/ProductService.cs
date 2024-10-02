@@ -1,5 +1,6 @@
 ﻿using P2FixAnAppDotNetCode.Models.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models.Services
 {
@@ -22,8 +23,6 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// </summary>
         public List<Product> GetAllProducts()
         {
-            // TODO change the return type from array to List<T> and propagate the change
-            // throughout the application
             return _productRepository.GetAllProducts();
         }
 
@@ -32,8 +31,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// </summary>
         public Product GetProductById(int id)
         {
-            // TODO implement the method
-            return null;
+            return GetAllProducts().Find(x => x.Id == id);
         }
 
         /// <summary>
@@ -43,6 +41,12 @@ namespace P2FixAnAppDotNetCode.Models.Services
         {
             // TODO implement the method
             // update product inventory by using _productRepository.UpdateProductStocks() method.
+
+            foreach (CartLine line in cart.Lines)
+            {
+                _productRepository.UpdateProductStocks(line.Product.Id, line.Quantity);
+                // To Finish
+            }
         }
     }
 }
