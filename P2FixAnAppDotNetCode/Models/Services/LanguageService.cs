@@ -24,15 +24,21 @@ namespace P2FixAnAppDotNetCode.Models.Services
         public string SetCulture(string language)
         {
             string lowerLanguage = language.ToLower().Trim();
-            string culture = "en";
+            string culture;
 
-            if (lowerLanguage == "french" || lowerLanguage == "francais" || lowerLanguage == "français")
-            {
-                culture = "fr";
-            }
-            else if (lowerLanguage == "spanish")
-            {
-                culture = "es";
+            switch (lowerLanguage)        
+            {   
+                case "french":
+                    culture = "fr";
+                    break;
+
+                case "spanish":
+                    culture = "es";
+                    break;
+
+                default:
+                    culture = "en";
+                    break;
             }
 
             return culture;
