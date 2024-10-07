@@ -52,7 +52,7 @@ namespace P2FixAnAppDotNetCode
                     new CultureInfo("es-ES"),
                     new CultureInfo("es"),
                 };
-
+                
                 opts.DefaultRequestCulture = new RequestCulture("en");
                 // Formatting numbers, dates, etc.
                 opts.SupportedCultures = supportedCultures;
