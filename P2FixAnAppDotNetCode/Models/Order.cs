@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.ApplicationInsights.AspNetCore;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace P2FixAnAppDotNetCode.Models
@@ -13,18 +14,18 @@ namespace P2FixAnAppDotNetCode.Models
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingName")]
+        [Required(ErrorMessageResourceName = "ErrorMissingName", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingAddress")]
+        [Required(ErrorMessageResourceName = "ErrorMissingAddress", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingCity")]
+        [Required(ErrorMessageResourceName = "ErrorMissingCity", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
         public string City { get; set; }
 
         public string Zip { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingCountry")]
+        [Required(ErrorMessageResourceName = "ErrorMissingCountry", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
         public string Country { get; set; }
 
         [BindNever]
