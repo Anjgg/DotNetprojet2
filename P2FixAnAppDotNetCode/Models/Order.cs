@@ -14,18 +14,18 @@ namespace P2FixAnAppDotNetCode.Models
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }
 
-        [Required(ErrorMessageResourceName = "ErrorMissingName", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
+        [Required(ErrorMessageResourceName = "ErrorMissingName", ErrorMessageResourceType = (typeof(Resources.Models.ViewModels.Order)))]
         public string Name { get; set; }
 
-        [Required(ErrorMessageResourceName = "ErrorMissingAddress", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
+        [Required(ErrorMessageResourceName = "ErrorMissingAddress", ErrorMessageResourceType = (typeof(Resources.Models.ViewModels.Order)))]
         public string Address { get; set; }
 
-        [Required(ErrorMessageResourceName = "ErrorMissingCity", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
+        [Required(ErrorMessageResourceName = "ErrorMissingCity", ErrorMessageResourceType = (typeof(Resources.Models.ViewModels.Order)))]
         public string City { get; set; }
 
         public string Zip { get; set; }
 
-        [Required(ErrorMessageResourceName = "ErrorMissingCountry", ErrorMessageResourceType = (typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order)))]
+        [Required(ErrorMessageResourceName = "ErrorMissingCountry", ErrorMessageResourceType = (typeof(Resources.Models.ViewModels.Order)))]
         public string Country { get; set; }
 
         [BindNever]

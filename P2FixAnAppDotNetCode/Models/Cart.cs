@@ -13,8 +13,6 @@ namespace P2FixAnAppDotNetCode.Models
         
         private List<CartLine> _cartLines = new List<CartLine>();
         
-
-
         /// <summary>
         /// Read-only property for display only
         /// </summary>
@@ -41,7 +39,7 @@ namespace P2FixAnAppDotNetCode.Models
                 _cartLines[indexInList].Quantity += quantity;
             }
             else
-            {   // Create the item
+            {   // Create the line
                 CartLine line = new CartLine();         
                 line.OrderLineId = product.Id;
                 line.Product = product;
